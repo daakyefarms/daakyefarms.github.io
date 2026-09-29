@@ -49,3 +49,56 @@
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(231, 229, 228, 0.9);
 }
+
+/* Compact navigation keeps every page reachable on phones and tablets. */
+.site-header > div { gap: 12px; }
+.site-header .desktop-nav, .site-header .header-phone { display: none; }
+.site-brand { min-width: 0; gap: 8px; }
+.site-brand > div:first-child { flex-shrink: 0; width: 36px; height: 36px; }
+.site-brand .text-xl { font-size: clamp(0.8rem, 3.7vw, 1.25rem); }
+.site-brand .tracking-widest { font-size: 8px; letter-spacing: 0.06em; }
+.header-actions { flex-shrink: 0; gap: 8px; }
+.menu-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: #f5f5f4; color: #14532d; font-size: 24px; }
+.mobile-navigation:not([hidden]) { display: grid; gap: 8px; padding: 12px 16px 16px; max-height: calc(100dvh - 80px); overflow-y: auto; border-top: 1px solid #e7e5e4; }
+.mobile-navigation a { display: flex; align-items: center; min-height: 44px; padding: 10px 16px; border-radius: 12px; font-weight: 700; }
+.mobile-navigation a:hover, .mobile-navigation a[aria-current] { background: #14532d; color: white; }
+:focus-visible { outline: 3px solid #d97706; outline-offset: 3px; }
+.grid > *, .flex > * { min-width: 0; }
+input, select, textarea { max-width: 100%; }
+#cartDrawer > .pointer-events-auto { padding-left: 0; width: min(100%, 448px); height: 100dvh; }
+#cartDrawer > .pointer-events-auto > div { width: 100%; min-height: 0; }
+#cartItemsList { min-height: 0; overscroll-behavior: contain; }
+#cartItemsList > div:not(.text-center) { flex-wrap: wrap; }
+#cartItemsList > div > .min-w-0 { flex-basis: 100%; }
+#cartItemsList .truncate { white-space: normal; }
+#cartItemsList button, #cartDrawer button.rounded-full { min-width: 44px; min-height: 44px; }
+#cartItemsList > div > .flex { width: 100%; justify-content: space-between; gap: 4px; }
+#cartDrawer .p-6 { padding: 16px; }
+#cartDrawer h2 { font-size: 1rem; }
+#cartDrawer .bg-stone-50 { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+#orderToast { width: calc(100% - 32px); max-width: 480px; bottom: 100px; pointer-events: none; }
+#orderToast button { pointer-events: auto; min-height: 44px; flex-shrink: 0; }
+footer { padding-bottom: 150px !important; }
+@media (max-width: 639px) {
+    input, select, textarea { font-size: 16px !important; }
+    .gradient-hero { padding-top: 48px; padding-bottom: 48px; }
+    .gradient-hero .grid-cols-3 .text-2xl { font-size: 1.2rem; }
+    #orderToast > div { gap: 8px; padding: 12px; }
+}
+@media (min-width: 640px) {
+    .site-brand > div:first-child { width: 48px; height: 48px; }
+    .site-brand .tracking-widest { font-size: 11px; }
+    .site-header .header-phone { display: inline-flex; }
+}
+@media (min-width: 1280px) {
+    .site-header .desktop-nav { display: flex; gap: 4px; }
+    .site-header .desktop-nav > a { margin: 0; padding-inline: 10px; }
+    .menu-toggle, .mobile-navigation { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    .animate-float, .toast-animate { animation: none; }
+}
+
+/* The open drawer already confirms additions; keep its total unobstructed. */
+body:has(#cartDrawer:not(.hidden)) #orderToast { display: none; }

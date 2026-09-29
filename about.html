@@ -90,9 +90,9 @@
     </div>
 
     <!-- Navigation Header -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-200">
+    <header class="site-header sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3.5 group">
+            <a href="index.html" class="site-brand flex items-center gap-3.5 group">
                 <div class="w-12 h-12 rounded-2xl overflow-hidden shadow-md border-2 border-amber-400 group-hover:scale-105 transition-transform duration-300">
                     <img src="assets/images/logo.jpg" alt="Daakye Legacy Farms Official Logo" class="w-full h-full object-cover">
                 </div>
@@ -103,7 +103,7 @@
             </a>
 
             <!-- Functional Tabs -->
-            <nav class="hidden md:flex items-center space-x-6 text-sm font-bold text-stone-700">
+            <nav aria-label="Main navigation" class="desktop-nav hidden md:flex items-center space-x-6 text-sm font-bold text-stone-700">
                 <a href="index.html" class="px-3 py-1.5 rounded-xl hover:text-farm-700 transition-colors">Home</a>
                 <a href="about.html" class="px-3.5 py-1.5 rounded-xl bg-farm-900 text-white font-black shadow-sm">Our Story</a>
                 <a href="products.html" class="px-3 py-1.5 rounded-xl hover:text-farm-700 transition-colors">Pork Cuts & Stock</a>
@@ -111,19 +111,27 @@
                 <a href="contact.html" class="px-3 py-1.5 rounded-xl hover:text-farm-700 transition-colors">Contact Us</a>
             </nav>
 
-            <div class="flex items-center gap-3">
-                <button onclick="toggleCartDrawer()" class="relative p-3 rounded-2xl bg-stone-100 hover:bg-stone-200 text-stone-800 transition-all hover:scale-105" title="View Order List">
+            <div class="header-actions flex items-center gap-3">
+                <button onclick="toggleCartDrawer()" class="relative p-3 rounded-2xl bg-stone-100 hover:bg-stone-200 text-stone-800 transition-all hover:scale-105" title="View Order List" aria-label="View order list">
                     <i data-lucide="shopping-bag" class="w-5 h-5 text-farm-900"></i>
                     <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-amber-500 text-stone-950 font-black text-[11px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">0</span>
                 </button>
 
                 <a href="https://wa.me/233243212359?text=Hello%20Daakye%20Legacy%20Farms" target="_blank" 
-                   class="hidden sm:inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-2xl font-bold text-sm shadow-md transition-all">
+                   class="header-phone hidden sm:inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-2xl font-bold text-sm shadow-md transition-all">
                     <i data-lucide="phone-call" class="w-4 h-4 text-amber-300"></i>
                     <span>+233 24 321 2359</span>
                 </a>
+                <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="mobile-navigation" aria-label="Open navigation menu">☰</button>
             </div>
         </div>
+            <nav id="mobile-navigation" class="mobile-navigation" aria-label="Mobile navigation" hidden>
+            <a href="index.html">Home</a>
+            <a href="about.html" aria-current="page">Our Story</a>
+            <a href="products.html">Pork Cuts & Stock</a>
+            <a href="quality.html">Quality Standards</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
     </header>
 
     <!-- Page Banner -->
@@ -280,6 +288,7 @@
 
     <!-- Shared Cart Script -->
     <script src="assets/js/cart.js"></script>
+    <script src="assets/js/navigation.js"></script>
     <script>
         lucide.createIcons();
     </script>
