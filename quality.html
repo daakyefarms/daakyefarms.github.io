@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality Standards & Hygiene | Daakye Legacy Farms</title>
+    <meta name="description" content="Discover our 4 Pillars of Excellence: 100% Organic Diet, Veterinary Care, Sanitary Processing, and Farm-to-Doorstep cold delivery in Ghana.">
+    <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        farm: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        },
+                        amber: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-emerald-950 text-emerald-200 text-xs py-2.5 px-4 text-center font-medium border-b border-emerald-800/80 flex justify-center items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+        <span>Hygienic vacuum-sealed pork delivery across Nsawam & Greater Accra!</span>
+        <a href="products.html" class="underline text-amber-300 hover:text-white font-bold ml-1 transition-colors">Order Fresh Cuts →</a>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3.5 group">
+                <div class="w-12 h-12 rounded-2xl overflow-hidden shadow-md border-2 border-amber-400 group-hover:scale-105 transition-transform duration-300">
+                    <img src="assets/images/logo.jpg" alt="Daakye Legacy Farms Official Logo" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <span class="text-xl font-black tracking-tight text-farm-950 block leading-none">DAAKYE LEGACY</span>
+                    <span class="text-[11px] font-bold tracking-widest text-amber-600 uppercase block mt-1">Farms • Nsawam, Ghana</span>
+                </div>
+            </a>
+
+            <!-- Functional Tabs -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-bold text-stone-700">
+                <a href="index.html" class="px-3 py-1.5 rounded-xl hover:text-farm-700 transition-colors">Home</a>
+                <a href="about.html" class="px-3 py-1.5 rounded-xl hover:text-farm-700 transition-colors">Our Story</a>
+                <a href="products.html" class="px-3 py-1.5 rounded-xl hover:text-farm-700 transition-colors">Pork Cuts & Stock</a>
+                <a href="quality.html" class="px-3.5 py-1.5 rounded-xl bg-farm-900 text-white font-black shadow-sm">Quality Standards</a>
+                <a href="contact.html" class="px-3 py-1.5 rounded-xl hover:text-farm-700 transition-colors">Contact Us</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button onclick="toggleCartDrawer()" class="relative p-3 rounded-2xl bg-stone-100 hover:bg-stone-200 text-stone-800 transition-all hover:scale-105" title="View Order List">
+                    <i data-lucide="shopping-bag" class="w-5 h-5 text-farm-900"></i>
+                    <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-amber-500 text-stone-950 font-black text-[11px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">0</span>
+                </button>
+
+                <a href="https://wa.me/233243212359?text=Hello%20Daakye%20Legacy%20Farms" target="_blank" 
+                   class="hidden sm:inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-2xl font-bold text-sm shadow-md transition-all">
+                    <i data-lucide="phone-call" class="w-4 h-4 text-amber-300"></i>
+                    <span>+233 24 321 2359</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <div class="bg-farm-950 text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-emerald-900">
+        <div class="max-w-7xl mx-auto space-y-4">
+            <div class="inline-flex items-center gap-2 bg-amber-500/20 text-amber-300 px-3.5 py-1 rounded-full text-xs font-bold border border-amber-400/40">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                <span>Strict Hygiene & Food Safety</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-black tracking-tight">Our Quality & Hygiene Standards</h1>
+            <p class="text-emerald-100 text-base max-w-2xl leading-relaxed">From the feed we mix to the sanitized cutting boards, every detail is engineered for superior taste and peace of mind.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
+        <!-- 4 Pillars Detailed -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 sm:p-10 rounded-3xl border border-stone-200 shadow-sm space-y-4">
+                <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-farm-900 flex items-center justify-center font-black text-2xl">01</div>
+                <h3 class="text-2xl font-black text-stone-900">100% Organically Formulated Feed</h3>
+                <p class="text-sm text-stone-600 leading-relaxed font-medium">
+                    We eliminate commercial growth hormones and mystery premixes. Our hogs thrive on a nutrient-balanced ratio of cassava root, high-grade yellow maize, roasted soybean meal, and essential trace minerals. This produces pork that is naturally sweet, firm, and free from off-flavors.
+                </p>
+                <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 text-xs font-bold text-farm-800">
+                    ✓ Clean feed troughs cleaned twice daily | Zero animal by-products
+                </div>
+            </div>
+
+            <div class="bg-white p-8 sm:p-10 rounded-3xl border border-stone-200 shadow-sm space-y-4">
+                <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-farm-900 flex items-center justify-center font-black text-2xl">02</div>
+                <h3 class="text-2xl font-black text-stone-900">Continuous Veterinary Oversight</h3>
+                <p class="text-sm text-stone-600 leading-relaxed font-medium">
+                    Our farm in Nsawam operates under the regular supervision of registered veterinary officers. Strict bio-security protocols (including visitor footbaths and quarantined transition pens) ensure that our herd remains healthy without reliance on prophylactic antibiotics.
+                </p>
+                <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 text-xs font-bold text-farm-800">
+                    ✓ Full vaccination logs maintained | Regular deworming schedule
+                </div>
+            </div>
+
+            <div class="bg-white p-8 sm:p-10 rounded-3xl border border-stone-200 shadow-sm space-y-4">
+                <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-farm-900 flex items-center justify-center font-black text-2xl">03</div>
+                <h3 class="text-2xl font-black text-stone-900">Sanitary Processing & Packaging</h3>
+                <p class="text-sm text-stone-600 leading-relaxed font-medium">
+                    Slaughter and meat dressing occur in clean, sanitized facilities. Carcasses are chilled rapidly to inhibit bacterial proliferation. Cuts are portioned using stainless-steel butchery tools and vacuum-sealed immediately in food-safe bags.
+                </p>
+                <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 text-xs font-bold text-farm-800">
+                    ✓ Food-grade vacuum packaging | Cleaned and singed trotters & heads
+                </div>
+            </div>
+
+            <div class="bg-white p-8 sm:p-10 rounded-3xl border border-stone-200 shadow-sm space-y-4">
+                <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-farm-900 flex items-center justify-center font-black text-2xl">04</div>
+                <h3 class="text-2xl font-black text-stone-900">Cold-Chain Farm-to-Doorstep Delivery</h3>
+                <p class="text-sm text-stone-600 leading-relaxed font-medium">
+                    Meat never sits at ambient temperatures. Orders are packed into insulated cold boxes with frozen gel packs and dispatched directly to your kitchen door in Accra, Nsawam, Tema, or Koforidua.
+                </p>
+                <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 text-xs font-bold text-farm-800">
+                    ✓ Delivery confirmation via WhatsApp | Guaranteed freshness on arrival
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner Card -->
+        <div class="bg-farm-900 text-white rounded-3xl p-8 sm:p-12 flex flex-col sm:flex-row justify-between items-center gap-6 shadow-xl">
+            <div class="space-y-2">
+                <h3 class="text-2xl font-black">Taste the Organic Difference</h3>
+                <p class="text-emerald-200 text-sm">Experience pork raised the right way. No compromises.</p>
+            </div>
+            <a href="products.html" class="bg-amber-500 hover:bg-amber-400 text-stone-950 font-black px-8 py-4 rounded-2xl text-xs shadow-lg transition-all">Order Fresh Pork Now</a>
+        </div>
+    </main>
+
+    <!-- Shopping Cart Drawer -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden" role="dialog" aria-modal="true">
+        <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm transition-opacity"></div>
+        <div class="pointer-events-auto fixed inset-y-0 right-0 flex max-w-full pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
+                <div class="p-6 border-b border-stone-200 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="assets/images/logo.jpg" alt="Logo" class="w-8 h-8 rounded-lg object-cover">
+                        <h2 class="text-lg font-black text-stone-900">Your Custom Order List</h2>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="p-2 text-stone-400 hover:text-stone-600 rounded-full">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <div id="cartItemsList" class="p-6 flex-1 overflow-y-auto space-y-4 divide-y border-stone-100">
+                    <p class="text-stone-500 text-xs text-center py-8">Your order list is empty. Add products from the menu!</p>
+                </div>
+                <div class="p-6 bg-stone-50 border-t border-stone-200 space-y-4">
+                    <div class="flex justify-between items-center text-sm font-bold">
+                        <span class="text-stone-600">Total Estimated Cost:</span>
+                        <span id="cartTotalDisplay" class="text-emerald-900 text-xl font-black">GH₵ 0</span>
+                    </div>
+                    <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 text-sm">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        <span>Send Order via WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Quick-Action WhatsApp Pill -->
+    <div class="fixed bottom-6 right-6 z-40 animate-float">
+        <a href="https://wa.me/233243212359?text=Hello%20Daakye%20Legacy%20Farms!%20I'd%20like%20to%20order%20pork%20products." target="_blank" 
+           class="bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl border-2 border-white flex items-center justify-center gap-2 font-black text-xs transition-all transform hover:scale-110">
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+            <span class="hidden sm:inline">WhatsApp Us</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 py-12 px-4 sm:px-6 lg:px-8 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-xs">
+            <div class="flex items-center gap-3">
+                <img src="assets/images/logo.jpg" alt="Logo" class="w-10 h-10 rounded-xl object-cover border border-amber-400">
+                <div>
+                    <span class="text-white font-black text-sm block">Daakye Legacy Farms</span>
+                    <span class="font-medium">Family-run organic pig farm | Nsawam, Ghana</span>
+                </div>
+            </div>
+            <p class="font-medium">© 2026 Daakye Legacy Farms (@dl__farms). All rights reserved.</p>
+            <div class="flex items-center space-x-6 font-bold">
+                <a href="https://www.instagram.com/dl__farms" target="_blank" class="hover:text-amber-400 transition-colors">Instagram</a>
+                <a href="https://wa.me/233243212359" target="_blank" class="hover:text-amber-400 transition-colors">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shared Cart Script -->
+    <script>
+        lucide.createIcons();
+        let cart = JSON.parse(localStorage.getItem('dl_cart') || '[]');
+
+        function updateCartUI() {
+            const list = document.getElementById('cartItemsList');
+            const badge = document.getElementById('cartBadge');
+            const totalDisp = document.getElementById('cartTotalDisplay');
+
+            if (badge) badge.innerText = cart.reduce((acc, item) => acc + item.qty, 0);
+            if (!list || !totalDisp) return;
+
+            if (cart.length === 0) {
+                list.innerHTML = `<p class="text-stone-500 text-xs text-center py-8">Your order list is empty. Add products from the menu!</p>`;
+                totalDisp.innerText = `GH₵ 0`;
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                html += `
+                    <div class="pt-3 flex items-center justify-between">
+                        <div>
+                            <p class="font-black text-xs text-stone-900">${item.name}</p>
+                            <p class="text-[11px] text-stone-500 font-bold">GH₵ ${item.price} / ${item.unit}</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="changeQty(${index}, -1)" class="w-6 h-6 bg-stone-200 rounded-lg text-xs font-black">-</button>
+                            <span class="text-xs font-black text-stone-800">${item.qty}</span>
+                            <button onclick="changeQty(${index}, 1)" class="w-6 h-6 bg-stone-200 rounded-lg text-xs font-black">+</button>
+                            <span class="text-xs font-black text-emerald-800 ml-2">GH₵ ${subtotal}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            list.innerHTML = html;
+            totalDisp.innerText = `GH₵ ${total.toLocaleString()}`;
+        }
+
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) cart.splice(index, 1);
+            localStorage.setItem('dl_cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function toggleCartDrawer(forceOpen = false) {
+            const drawer = document.getElementById('cartDrawer');
+            if (forceOpen) drawer.classList.remove('hidden');
+            else drawer.classList.toggle('hidden');
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) return alert('Your cart is empty!');
+            let text = `Hello Daakye Legacy Farms! 🐖\n\nI would like to place an order:\n`;
+            let total = 0;
+            cart.forEach(item => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                text += `• ${item.name} (${item.qty} ${item.unit}) - GH₵ ${subtotal}\n`;
+            });
+            text += `\nTotal Estimated Amount: GH₵ ${total}\n\nPlease confirm availability and delivery.`;
+            window.open(`https://wa.me/233243212359?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        updateCartUI();
+    </script>
+</body>
+</html>
