@@ -1,0 +1,66 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280' viewBox='0 0 280 280'>
+  <g fill='none' stroke='#15803d' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.09'>
+    <!-- Pig 1: Top-Left (rotated -18deg) -->
+    <g transform='translate(45, 45) rotate(-18) scale(0.48)'>
+      <!-- Body & Head -->
+      <path d='M65 25 C45 25 28 38 24 55 C20 70 24 86 38 94 C50 101 78 101 90 92 C102 83 104 64 98 48 C91 32 78 25 65 25 Z' fill='#15803d' fill-opacity='0.03'/>
+      <!-- Snout -->
+      <ellipse cx='20' cy='66' rx='10' ry='7'/>
+      <circle cx='17' cy='66' r='1.8' fill='#15803d'/>
+      <circle cx='23' cy='66' r='1.8' fill='#15803d'/>
+      <!-- Ears -->
+      <path d='M42 34 C36 18 48 14 54 28'/>
+      <path d='M70 26 C75 11 86 15 80 29'/>
+      <!-- Eye -->
+      <circle cx='38' cy='50' r='2.5' fill='#15803d'/>
+      <!-- Curly Tail -->
+      <path d='M96 68 Q112 62 106 75 Q100 84 114 78'/>
+      <!-- Legs -->
+      <path d='M40 94 L37 114 M54 99 L54 114 M76 96 L76 114 M88 92 L91 114'/>
+    </g>
+
+    <!-- Pig 2: Top-Right (rotated +32deg) -->
+    <g transform='translate(195, 75) rotate(32) scale(0.42)'>
+      <path d='M65 25 C45 25 28 38 24 55 C20 70 24 86 38 94 C50 101 78 101 90 92 C102 83 104 64 98 48 C91 32 78 25 65 25 Z' fill='#15803d' fill-opacity='0.03'/>
+      <ellipse cx='20' cy='66' rx='10' ry='7'/>
+      <circle cx='17' cy='66' r='1.8' fill='#15803d'/>
+      <circle cx='23' cy='66' r='1.8' fill='#15803d'/>
+      <path d='M42 34 C36 18 48 14 54 28'/>
+      <path d='M70 26 C75 11 86 15 80 29'/>
+      <circle cx='38' cy='50' r='2.5' fill='#15803d'/>
+      <path d='M96 68 Q112 62 106 75 Q100 84 114 78'/>
+      <path d='M40 94 L37 114 M54 99 L54 114 M76 96 L76 114 M88 92 L91 114'/>
+    </g>
+
+    <!-- Pig 3: Bottom-Left (rotated -38deg) -->
+    <g transform='translate(60, 205) rotate(-38) scale(0.40)'>
+      <path d='M65 25 C45 25 28 38 24 55 C20 70 24 86 38 94 C50 101 78 101 90 92 C102 83 104 64 98 48 C91 32 78 25 65 25 Z' fill='#15803d' fill-opacity='0.03'/>
+      <ellipse cx='20' cy='66' rx='10' ry='7'/>
+      <circle cx='17' cy='66' r='1.8' fill='#15803d'/>
+      <circle cx='23' cy='66' r='1.8' fill='#15803d'/>
+      <path d='M42 34 C36 18 48 14 54 28'/>
+      <path d='M70 26 C75 11 86 15 80 29'/>
+      <circle cx='38' cy='50' r='2.5' fill='#15803d'/>
+      <path d='M96 68 Q112 62 106 75 Q100 84 114 78'/>
+      <path d='M40 94 L37 114 M54 99 L54 114 M76 96 L76 114 M88 92 L91 114'/>
+    </g>
+
+    <!-- Pig 4: Bottom-Right (rotated +15deg) -->
+    <g transform='translate(180, 210) rotate(15) scale(0.46)'>
+      <path d='M65 25 C45 25 28 38 24 55 C20 70 24 86 38 94 C50 101 78 101 90 92 C102 83 104 64 98 48 C91 32 78 25 65 25 Z' fill='#15803d' fill-opacity='0.03'/>
+      <ellipse cx='20' cy='66' rx='10' ry='7'/>
+      <circle cx='17' cy='66' r='1.8' fill='#15803d'/>
+      <circle cx='23' cy='66' r='1.8' fill='#15803d'/>
+      <path d='M42 34 C36 18 48 14 54 28'/>
+      <path d='M70 26 C75 11 86 15 80 29'/>
+      <circle cx='38' cy='50' r='2.5' fill='#15803d'/>
+      <path d='M96 68 Q112 62 106 75 Q100 84 114 78'/>
+      <path d='M40 94 L37 114 M54 99 L54 114 M76 96 L76 114 M88 92 L91 114'/>
+    </g>
+
+    <!-- Decorative Organic Farm Leaves & Twigs scattered -->
+    <path d='M140 35 C150 28 158 38 148 48 C138 45 136 38 140 35 Z' fill='#d97706' fill-opacity='0.04' stroke='#d97706' stroke-width='1.5'/>
+    <path d='M120 140 C132 130 142 144 130 155 C118 150 115 142 120 140 Z' fill='#d97706' fill-opacity='0.04' stroke='#d97706' stroke-width='1.5'/>
+    <path d='M260 170 C270 162 278 174 268 184 C256 180 254 172 260 170 Z' fill='#d97706' fill-opacity='0.04' stroke='#d97706' stroke-width='1.5'/>
+  </g>
+</svg>

@@ -45,7 +45,32 @@
     </script>
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-amber-500 selection:text-white">
+<body class="pig-pattern-bg text-stone-800 font-sans antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- Subtle Floating Decorative Watermark Pig 1 (Top Right) -->
+    <div class="pointer-events-none fixed top-24 right-10 opacity-[0.06] select-none rotate-[24deg] z-0 hidden lg:block">
+        <svg width="220" height="220" viewBox="0 0 100 100" fill="currentColor" class="text-emerald-900">
+            <path d="M65 25 C45 25 28 38 24 55 C20 70 24 86 38 94 C50 101 78 101 90 92 C102 83 104 64 98 48 C91 32 78 25 65 25 Z"/>
+            <ellipse cx="20" cy="66" rx="10" ry="7"/>
+            <path d="M42 34 C36 18 48 14 54 28"/>
+            <path d="M70 26 C75 11 86 15 80 29"/>
+            <path d="M96 68 Q112 62 106 75 Q100 84 114 78"/>
+            <path d="M40 94 L37 114 M54 99 L54 114 M76 96 L76 114 M88 92 L91 114" stroke="currentColor" stroke-width="6"/>
+        </svg>
+    </div>
+
+    <!-- Subtle Floating Decorative Watermark Pig 2 (Bottom Left) -->
+    <div class="pointer-events-none fixed bottom-20 left-8 opacity-[0.05] select-none -rotate-[32deg] z-0 hidden lg:block">
+        <svg width="260" height="260" viewBox="0 0 100 100" fill="currentColor" class="text-emerald-900">
+            <path d="M65 25 C45 25 28 38 24 55 C20 70 24 86 38 94 C50 101 78 101 90 92 C102 83 104 64 98 48 C91 32 78 25 65 25 Z"/>
+            <ellipse cx="20" cy="66" rx="10" ry="7"/>
+            <path d="M42 34 C36 18 48 14 54 28"/>
+            <path d="M70 26 C75 11 86 15 80 29"/>
+            <path d="M96 68 Q112 62 106 75 Q100 84 114 78"/>
+            <path d="M40 94 L37 114 M54 99 L54 114 M76 96 L76 114 M88 92 L91 114" stroke="currentColor" stroke-width="6"/>
+        </svg>
+    </div>
+
 
     <!-- Top Announcement Bar -->
     <div class="bg-emerald-950 text-emerald-200 text-xs py-2.5 px-4 text-center font-medium border-b border-emerald-800/80 flex justify-center items-center gap-2">
@@ -239,12 +264,64 @@
         lucide.createIcons();
         let cart = JSON.parse(localStorage.getItem('dl_cart') || '[]');
 
+        
+        let toastTimeout = null;
+
+        function showToast(msg) {
+            const toast = document.getElementById('orderToast');
+            const text = document.getElementById('toastMessage');
+            if (!toast || !text) return;
+
+            text.innerText = msg;
+            toast.classList.remove('hidden');
+
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3200);
+        }
+
+        function addToCart(name, price, unit, btnElement = null) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ name, price, unit, qty: 1 });
+            }
+            saveCart();
+
+            // Interactive Button Feedback
+            if (btnElement) {
+                const originalHtml = btnElement.innerHTML;
+                btnElement.innerHTML = `<span class="flex items-center justify-center gap-1.5 text-white font-black"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg> Added to Order!</span>`;
+                btnElement.classList.remove('bg-farm-900', 'bg-emerald-950');
+                btnElement.classList.add('bg-emerald-600', 'scale-95');
+                setTimeout(() => {
+                    btnElement.classList.remove('scale-95');
+                }, 150);
+                setTimeout(() => {
+                    btnElement.innerHTML = originalHtml;
+                    btnElement.classList.remove('bg-emerald-600');
+                    btnElement.classList.add('bg-farm-900');
+                    if (window.lucide) lucide.createIcons();
+                }, 1400);
+            }
+
+            // Interactive Toast
+            showToast(`🐖 Added ${name} (GH₵ ${price}/${unit}) to your order!`);
+        }
+
         function updateCartUI() {
             const list = document.getElementById('cartItemsList');
             const badge = document.getElementById('cartBadge');
             const totalDisp = document.getElementById('cartTotalDisplay');
 
-            if (badge) badge.innerText = cart.reduce((acc, item) => acc + item.qty, 0);
+            const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+            if (badge) {
+                badge.innerText = totalQty;
+                badge.classList.add('scale-125');
+                setTimeout(() => badge.classList.remove('scale-125'), 200);
+            }
             if (!list || !totalDisp) return;
 
             if (cart.length === 0) {
@@ -286,10 +363,16 @@
             updateCartUI();
         }
 
-        function toggleCartDrawer(forceOpen = false) {
+        function toggleCartDrawer(forceOpen = null) {
             const drawer = document.getElementById('cartDrawer');
-            if (forceOpen) drawer.classList.remove('hidden');
-            else drawer.classList.toggle('hidden');
+            if (!drawer) return;
+            if (forceOpen === true) {
+                drawer.classList.remove('hidden');
+            } else if (forceOpen === false) {
+                drawer.classList.add('hidden');
+            } else {
+                drawer.classList.toggle('hidden');
+            }
         }
 
         function checkoutWhatsApp() {
@@ -307,5 +390,20 @@
 
         updateCartUI();
     </script>
+
+    <!-- Order Notification Toast -->
+    <div id="orderToast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden toast-animate">
+        <div class="bg-emerald-950 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-4 border border-amber-400/40">
+            <span class="text-xl">🐖</span>
+            <div>
+                <p id="toastMessage" class="text-xs font-bold text-emerald-100">Added to your order!</p>
+                <p class="text-[10px] text-amber-400 font-semibold">Click to view order drawer</p>
+            </div>
+            <button onclick="toggleCartDrawer(true)" class="bg-amber-500 hover:bg-amber-400 text-stone-950 font-black text-xs px-3 py-1.5 rounded-xl ml-2 shadow-sm transition-transform hover:scale-105">
+                View Order →
+            </button>
+        </div>
+    </div>
+
 </body>
 </html>
