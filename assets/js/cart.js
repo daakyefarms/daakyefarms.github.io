@@ -6,13 +6,20 @@
  */
 
 // Resilient Cart Storage (works in file://, iframes, and local servers)
+const CART_STORAGE_KEY = 'daakye-legacy-farms:cart:v1';
 let cartMemory = [];
 
 function getStoredCart() {
     try {
         if (typeof window !== 'undefined' && window.localStorage) {
-            const raw = localStorage.getItem('dl_cart');
-            if (raw) return JSON.parse(raw);
+            const raw = localStorage.getItem(CART_STORAGE_KEY);
+            if (raw) {
+                const items = JSON.parse(raw);
+                if (Array.isArray(items)) return items.filter(item =>
+                    item && typeof item.name === 'string' &&
+                    typeof item.unit === 'string' && Number.isFinite(item.price) &&
+                    item.price >= 0 && Number.isFinite(item.qty) && item.qty > 0);
+            }
         }
     } catch (e) {
         console.warn('LocalStorage not available, falling back to memory store:', e);
@@ -24,11 +31,17 @@ function persistCart(items) {
     cartMemory = items;
     try {
         if (typeof window !== 'undefined' && window.localStorage) {
-            localStorage.setItem('dl_cart', JSON.stringify(items));
+            localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
         }
     } catch (e) {
         console.warn('LocalStorage save failed:', e);
     }
+}
+
+function escapeCartText(value) {
+    return value.replace(/[&<>"']/g, character => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[character]);
 }
 
 let cart = getStoredCart();
@@ -155,8 +168,8 @@ function updateCartUI() {
         html += `
             <div class="py-3.5 border-b border-stone-100 flex items-center justify-between gap-3">
                 <div class="flex-1 min-w-0">
-                    <p class="font-black text-xs text-stone-900 truncate">${item.name}</p>
-                    <p class="text-[11px] text-amber-600 font-bold mt-0.5">GH₵ ${item.price.toLocaleString()} / ${item.unit}</p>
+                    <p class="font-black text-xs text-stone-900 truncate">${escapeCartText(item.name)}</p>
+                    <p class="text-[11px] text-amber-600 font-bold mt-0.5">GH₵ ${item.price.toLocaleString()} / ${escapeCartText(item.unit)}</p>
                 </div>
                 <div class="flex items-center gap-2">
                     <button onclick="changeQty(${index}, -1)" class="w-7 h-7 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-lg text-xs font-black transition-colors flex items-center justify-center shadow-xs" title="Decrease Quantity">−</button>
