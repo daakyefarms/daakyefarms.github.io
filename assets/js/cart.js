@@ -77,7 +77,7 @@ function addToCart(name, price, unit = 'kg', btnElement = null) {
             btnElement.innerHTML = originalHtml;
             btnElement.classList.remove('bg-emerald-600');
             btnElement.classList.add('bg-farm-900', 'hover:bg-farm-800');
-            if (window.lucide) lucide.createIcons();
+
         }, 1500);
     }
 

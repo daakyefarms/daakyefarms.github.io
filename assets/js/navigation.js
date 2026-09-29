@@ -21,3 +21,12 @@ document.addEventListener('click', event => {
     if (!event.target.closest('.site-header')) closeNavigation();
 });
 window.matchMedia('(min-width: 1280px)').addEventListener('change', closeNavigation);
+
+// Navigate immediately after a touch-generated click, preserving modified clicks.
+mobileNavigation.addEventListener('click', event => {
+    const link = event.target.closest('a[href]');
+    if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    window.location.assign(link.href);
+});
+window.addEventListener('pageshow', closeNavigation);

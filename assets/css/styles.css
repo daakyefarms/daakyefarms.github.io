@@ -102,3 +102,7 @@ footer { padding-bottom: 150px !important; }
 
 /* The open drawer already confirms additions; keep its total unobstructed. */
 body:has(#cartDrawer:not(.hidden)) #orderToast { display: none; }
+
+/* Keep the expanded navigation above floating order controls. */
+.site-header { z-index: 45; }
+.mobile-navigation a { touch-action: manipulation; }

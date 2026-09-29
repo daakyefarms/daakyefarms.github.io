@@ -18,3 +18,5 @@ $RECYCLE.BIN/
 *.tmp
 *.log
 scratch/
+
+node_modules/

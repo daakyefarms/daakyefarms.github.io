@@ -98,3 +98,7 @@ npx vercel
 ## 📄 License & Credits
 © 2026 **Daakye Legacy Farms** (@dl__farms). All rights reserved.
 Built for the Daakye Legacy Farms community in Nsawam, Ghana.
+
+## Updating styles
+
+Styles are prebuilt so visitors do not download or run Tailwind. After changing utility classes in HTML or JavaScript, run npm install and npm run build:css, then commit assets/css/tailwind.css with your changes. Photos use responsive WebP files; original JPGs are retained as source assets. Icons are embedded SVGs with their license in assets/icons-LICENSE.
