@@ -1,0 +1,51 @@
+/* Daakye Legacy Farms - Official Stylesheet */
+
+/* Faint but clearly noticeable organic pig pattern wallpaper across all pages */
+.pig-pattern-bg {
+    background-color: #faf7f2 !important;
+    background-image: url('../images/pig_pattern.svg') !important;
+    background-repeat: repeat !important;
+    background-size: 320px 320px !important;
+    background-attachment: fixed !important;
+}
+
+/* Custom Elegant Farm Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1ede4;
+}
+::-webkit-scrollbar-thumb {
+    background: #15803d;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #052e16;
+}
+
+/* Toast Slide-In Animation */
+@keyframes toastSlide {
+    0% { transform: translate(-50%, 80px); opacity: 0; }
+    100% { transform: translate(-50%, 0); opacity: 1; }
+}
+.toast-animate {
+    animation: toastSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Smooth Floating Animation for CTA Badges */
+@keyframes floatAnim {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+.animate-float {
+    animation: floatAnim 4s ease-in-out infinite;
+}
+
+/* Translucent Card Glassmorphism for High-End Organic Aesthetics */
+.farm-card-glass {
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(231, 229, 228, 0.9);
+}
