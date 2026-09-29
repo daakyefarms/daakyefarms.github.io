@@ -252,10 +252,16 @@
                         </div>
                     </div>
 
-                    <button onclick="sendQuickWhatsAppOrder()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-4 px-5 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm">
-                        <i data-lucide="message-circle" class="w-5 h-5"></i>
-                        <span>Send Quick Order via WhatsApp</span>
-                    </button>
+                    <div class="space-y-2">
+                        <button onclick="sendQuickWhatsAppOrder()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-4 px-5 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            <span>Send Quick Order via WhatsApp</span>
+                        </button>
+                        <button onclick="addQuickOrderToCart(this)" class="w-full bg-stone-100 hover:bg-stone-200 text-stone-800 font-bold py-3 px-5 rounded-2xl transition-all flex items-center justify-center gap-2 text-xs">
+                            <i data-lucide="plus" class="w-4 h-4 text-emerald-700"></i>
+                            <span>Add Calculator Cut to Order List</span>
+                        </button>
+                    </div>
 
                     <div class="flex items-center justify-center gap-2 text-xs font-medium text-stone-500 pt-2 border-t border-stone-200">
                         <i data-lucide="truck" class="w-4 h-4 text-emerald-600"></i>
@@ -487,12 +493,14 @@
     </footer>
 
     <!-- Shared Cart & Calculator Script -->
+    <script src="assets/js/cart.js"></script>
     <script>
         lucide.createIcons();
-        let cart = JSON.parse(localStorage.getItem('dl_cart') || '[]');
 
         function calculateQuickOrder() {
-            const price = parseFloat(document.getElementById('quickCutSelect').value);
+            const select = document.getElementById('quickCutSelect');
+            if (!select) return;
+            const price = parseFloat(select.value);
             const qty = parseFloat(document.getElementById('quickQtyInput').value) || 1;
             document.getElementById('quickTotalDisplay').innerText = (price * qty).toLocaleString();
         }
@@ -506,135 +514,36 @@
             window.open(`https://wa.me/233243212359?text=${encodeURIComponent(text)}`, '_blank');
         }
 
-        
-        let toastTimeout = null;
+        function addQuickOrderToCart(btnElement = null) {
+            const select = document.getElementById('quickCutSelect');
+            const cutName = select.options[select.selectedIndex].getAttribute('data-name');
+            const price = parseFloat(select.value);
+            const qty = parseFloat(document.getElementById('quickQtyInput').value) || 1;
+            const unit = select.options[select.selectedIndex].innerText.includes('/head') ? 'head' : (select.options[select.selectedIndex].innerText.includes('/set') ? 'set' : 'kg');
 
-        function showToast(msg) {
-            const toast = document.getElementById('orderToast');
-            const text = document.getElementById('toastMessage');
-            if (!toast || !text) return;
-
-            text.innerText = msg;
-            toast.classList.remove('hidden');
-
-            if (toastTimeout) clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3200);
-        }
-
-        function addToCart(name, price, unit, btnElement = null) {
-            const existing = cart.find(item => item.name === name);
+            const existing = cart.find(item => item.name === cutName);
             if (existing) {
-                existing.qty += 1;
+                existing.qty += qty;
             } else {
-                cart.push({ name, price, unit, qty: 1 });
+                cart.push({ name: cutName, price, unit, qty: qty });
             }
             saveCart();
 
-            // Interactive Button Feedback
             if (btnElement) {
                 const originalHtml = btnElement.innerHTML;
-                btnElement.innerHTML = `<span class="flex items-center justify-center gap-1.5 text-white font-black"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg> Added to Order!</span>`;
-                btnElement.classList.remove('bg-farm-900', 'bg-emerald-950');
-                btnElement.classList.add('bg-emerald-600', 'scale-95');
-                setTimeout(() => {
-                    btnElement.classList.remove('scale-95');
-                }, 150);
+                btnElement.innerHTML = `<span class="flex items-center justify-center gap-1.5 text-white font-black"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg> Added ${qty} to Order!</span>`;
+                btnElement.classList.add('bg-emerald-600', 'text-white');
+                btnElement.classList.remove('bg-stone-100', 'text-stone-800');
                 setTimeout(() => {
                     btnElement.innerHTML = originalHtml;
-                    btnElement.classList.remove('bg-emerald-600');
-                    btnElement.classList.add('bg-farm-900');
+                    btnElement.classList.remove('bg-emerald-600', 'text-white');
+                    btnElement.classList.add('bg-stone-100', 'text-stone-800');
                     if (window.lucide) lucide.createIcons();
                 }, 1400);
             }
-
-            // Interactive Toast
-            showToast(`🐖 Added ${name} (GH₵ ${price}/${unit}) to your order!`);
+            showToast(`🐖 Added ${qty}x ${cutName} to your order!`);
+            toggleCartDrawer(true);
         }
-
-        function saveCart() {
-            localStorage.setItem('dl_cart', JSON.stringify(cart));
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            const list = document.getElementById('cartItemsList');
-            const badge = document.getElementById('cartBadge');
-            const totalDisp = document.getElementById('cartTotalDisplay');
-
-            const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
-            if (badge) {
-                badge.innerText = totalQty;
-                badge.classList.add('scale-125');
-                setTimeout(() => badge.classList.remove('scale-125'), 200);
-            }
-            if (!list || !totalDisp) return;
-
-            if (cart.length === 0) {
-                list.innerHTML = `<p class="text-stone-500 text-xs text-center py-8">Your order list is empty. Add products from the menu!</p>`;
-                totalDisp.innerText = `GH₵ 0`;
-                return;
-            }
-
-            let html = '';
-            let total = 0;
-
-            cart.forEach((item, index) => {
-                const subtotal = item.price * item.qty;
-                total += subtotal;
-                html += `
-                    <div class="pt-3 flex items-center justify-between">
-                        <div>
-                            <p class="font-black text-xs text-stone-900">${item.name}</p>
-                            <p class="text-[11px] text-stone-500 font-bold">GH₵ ${item.price} / ${item.unit}</p>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button onclick="changeQty(${index}, -1)" class="w-6 h-6 bg-stone-200 rounded-lg text-xs font-black">-</button>
-                            <span class="text-xs font-black text-stone-800">${item.qty}</span>
-                            <button onclick="changeQty(${index}, 1)" class="w-6 h-6 bg-stone-200 rounded-lg text-xs font-black">+</button>
-                            <span class="text-xs font-black text-emerald-800 ml-2">GH₵ ${subtotal}</span>
-                        </div>
-                    </div>
-                `;
-            });
-
-            list.innerHTML = html;
-            totalDisp.innerText = `GH₵ ${total.toLocaleString()}`;
-        }
-
-        function changeQty(index, delta) {
-            cart[index].qty += delta;
-            if (cart[index].qty <= 0) cart.splice(index, 1);
-            saveCart();
-        }
-
-        function toggleCartDrawer(forceOpen = null) {
-            const drawer = document.getElementById('cartDrawer');
-            if (!drawer) return;
-            if (forceOpen === true) {
-                drawer.classList.remove('hidden');
-            } else if (forceOpen === false) {
-                drawer.classList.add('hidden');
-            } else {
-                drawer.classList.toggle('hidden');
-            }
-        }
-
-        function checkoutWhatsApp() {
-            if (cart.length === 0) return alert('Your cart is empty!');
-            let text = `Hello Daakye Legacy Farms! 🐖\n\nI would like to place an order:\n`;
-            let total = 0;
-            cart.forEach(item => {
-                const subtotal = item.price * item.qty;
-                total += subtotal;
-                text += `• ${item.name} (${item.qty} ${item.unit}) - GH₵ ${subtotal}\n`;
-            });
-            text += `\nTotal Estimated Amount: GH₵ ${total}\n\nPlease confirm availability and delivery.`;
-            window.open(`https://wa.me/233243212359?text=${encodeURIComponent(text)}`, '_blank');
-        }
-
-        updateCartUI();
     </script>
 
     <!-- Order Notification Toast -->

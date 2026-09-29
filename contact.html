@@ -281,133 +281,9 @@
     </footer>
 
     <!-- Script Logic -->
+    <script src="assets/js/cart.js"></script>
     <script>
         lucide.createIcons();
-        let cart = JSON.parse(localStorage.getItem('dl_cart') || '[]');
-
-        
-        let toastTimeout = null;
-
-        function showToast(msg) {
-            const toast = document.getElementById('orderToast');
-            const text = document.getElementById('toastMessage');
-            if (!toast || !text) return;
-
-            text.innerText = msg;
-            toast.classList.remove('hidden');
-
-            if (toastTimeout) clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3200);
-        }
-
-        function addToCart(name, price, unit, btnElement = null) {
-            const existing = cart.find(item => item.name === name);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ name, price, unit, qty: 1 });
-            }
-            saveCart();
-
-            // Interactive Button Feedback
-            if (btnElement) {
-                const originalHtml = btnElement.innerHTML;
-                btnElement.innerHTML = `<span class="flex items-center justify-center gap-1.5 text-white font-black"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg> Added to Order!</span>`;
-                btnElement.classList.remove('bg-farm-900', 'bg-emerald-950');
-                btnElement.classList.add('bg-emerald-600', 'scale-95');
-                setTimeout(() => {
-                    btnElement.classList.remove('scale-95');
-                }, 150);
-                setTimeout(() => {
-                    btnElement.innerHTML = originalHtml;
-                    btnElement.classList.remove('bg-emerald-600');
-                    btnElement.classList.add('bg-farm-900');
-                    if (window.lucide) lucide.createIcons();
-                }, 1400);
-            }
-
-            // Interactive Toast
-            showToast(`🐖 Added ${name} (GH₵ ${price}/${unit}) to your order!`);
-        }
-
-        function updateCartUI() {
-            const list = document.getElementById('cartItemsList');
-            const badge = document.getElementById('cartBadge');
-            const totalDisp = document.getElementById('cartTotalDisplay');
-
-            const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
-            if (badge) {
-                badge.innerText = totalQty;
-                badge.classList.add('scale-125');
-                setTimeout(() => badge.classList.remove('scale-125'), 200);
-            }
-            if (!list || !totalDisp) return;
-
-            if (cart.length === 0) {
-                list.innerHTML = `<p class="text-stone-500 text-xs text-center py-8">Your order list is empty. Add products from the menu!</p>`;
-                totalDisp.innerText = `GH₵ 0`;
-                return;
-            }
-
-            let html = '';
-            let total = 0;
-
-            cart.forEach((item, index) => {
-                const subtotal = item.price * item.qty;
-                total += subtotal;
-                html += `
-                    <div class="pt-3 flex items-center justify-between">
-                        <div>
-                            <p class="font-black text-xs text-stone-900">${item.name}</p>
-                            <p class="text-[11px] text-stone-500 font-bold">GH₵ ${item.price} / ${item.unit}</p>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button onclick="changeQty(${index}, -1)" class="w-6 h-6 bg-stone-200 rounded-lg text-xs font-black">-</button>
-                            <span class="text-xs font-black text-stone-800">${item.qty}</span>
-                            <button onclick="changeQty(${index}, 1)" class="w-6 h-6 bg-stone-200 rounded-lg text-xs font-black">+</button>
-                            <span class="text-xs font-black text-emerald-800 ml-2">GH₵ ${subtotal}</span>
-                        </div>
-                    </div>
-                `;
-            });
-
-            list.innerHTML = html;
-            totalDisp.innerText = `GH₵ ${total.toLocaleString()}`;
-        }
-
-        function changeQty(index, delta) {
-            cart[index].qty += delta;
-            if (cart[index].qty <= 0) cart.splice(index, 1);
-            localStorage.setItem('dl_cart', JSON.stringify(cart));
-            updateCartUI();
-        }
-
-        function toggleCartDrawer(forceOpen = null) {
-            const drawer = document.getElementById('cartDrawer');
-            if (!drawer) return;
-            if (forceOpen === true) {
-                drawer.classList.remove('hidden');
-            } else if (forceOpen === false) {
-                drawer.classList.add('hidden');
-            } else {
-                drawer.classList.toggle('hidden');
-            }
-        }
-
-        function checkoutWhatsApp() {
-            if (cart.length === 0) return alert('Your cart is empty!');
-            let text = `Hello Daakye Legacy Farms! 🐖\n\nI would like to place an order:\n`;
-            let total = 0;
-            cart.forEach(item => {
-                const subtotal = item.price * item.qty;
-                total += subtotal;
-                text += `• ${item.name} (${item.qty} ${item.unit}) - GH₵ ${subtotal}\n`;
-            });
-            text += `\nTotal Estimated Amount: GH₵ ${total}\n\nPlease confirm availability and delivery.`;
-            window.open(`https://wa.me/233243212359?text=${encodeURIComponent(text)}`, '_blank');
-        }
 
         function handleContactSubmit(e) {
             e.preventDefault();
@@ -419,8 +295,6 @@
             const text = `Hello Daakye Legacy Farms!\n\nNew Inquiry from Website Contact Page:\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Location: ${loc}\n📝 Details: ${msg}`;
             window.open(`https://wa.me/233243212359?text=${encodeURIComponent(text)}`, '_blank');
         }
-
-        updateCartUI();
     </script>
 
     <!-- Order Notification Toast -->
