@@ -37,7 +37,7 @@ The website is architected into 5 dedicated, responsive pages sharing consistent
 
 All images are authentic, high-resolution photography dedicated to Daakye Legacy Farms:
 
-* **`assets/images/logo.jpg`** — Official brand logo featuring the gold pig emblem framed by organic harvest wheat and laurel leaves.
+* **`assets/images/logo.jpg`** — Official brand logo featuring the brown pig silhouette beneath a golden rising sun, with the "Daakye Legacy Farms" wordmark.
 * **`assets/images/farm.jpg`** — Modern organic pig farm pens in Nsawam with natural ventilation and clean straw bedding.
 * **`assets/images/pork_chops.jpg`** — Fresh prime bone-in pork chops with natural marbling on butcher paper with sea salt and thyme.
 * **`assets/images/pork_ribs.jpg`** — Fresh, meaty spare ribs cutlet ready for grilling and slow-cooked Ghanaian pepper soups.
