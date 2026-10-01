@@ -2,6 +2,8 @@
 
 Official multi-page website and digital storefront for **Daakye Legacy Farms**, a family-run, 100% organically fed pig farm based in **Nsawam, Ghana**.
 
+🌐 **Visit the website:** [Daakye Farms — daakyefarms.github.io](https://daakyefarms.github.io/)
+
 ---
 
 ## 🌟 About Daakye Legacy Farms
