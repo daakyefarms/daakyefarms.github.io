@@ -249,7 +249,7 @@ function toggleCartDrawer(forceOpen = null) {
 }
 
 /**
- * Build formatted order message and send to WhatsApp (+233 24 321 2359)
+ * Build formatted order message and send to WhatsApp (+233 20 644 4261)
  */
 function checkoutWhatsApp() {
     if (cart.length === 0) {
@@ -270,7 +270,7 @@ function checkoutWhatsApp() {
     text += `📍 Delivery Destination: [Please enter your area/city in Accra, Nsawam, or Koforidua]\n`;
     text += `Please confirm fresh cut availability, delivery schedule, and mobile money payment details. Thank you!`;
 
-    const url = `https://wa.me/233243212359?text=${encodeURIComponent(text)}`;
+    const url = `https://wa.me/233206444261?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
 }
 

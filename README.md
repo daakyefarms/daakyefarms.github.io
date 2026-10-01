@@ -12,8 +12,8 @@ Official multi-page website and digital storefront for **Daakye Legacy Farms**, 
 * **Instagram:** [@dl__farms](https://www.instagram.com/dl__farms)
 * **Farm Location:** Nsawam, Eastern Region, Ghana 🇬🇭
 * **Direct Contacts:** 
-  * `+233 24 321 2359` (Primary & WhatsApp)
-  * `+233 20 644 4261`
+  * `+233 20 644 4261` (Primary & WhatsApp)
+  * `+233 24 321 2359`
   * `+233 55 004 9966`
 * **Delivery Zones:** Nsawam, Pokuase, Amasaman, Greater Accra Metropolis, East Legon, Tema, and Koforidua.
 
@@ -56,7 +56,7 @@ All images are authentic, high-resolution photography dedicated to Daakye Legacy
 3. **Off-Canvas Shopping Cart Drawer:**
    * Shows itemized lists, quantity adjusters (`+` / `-`), auto-calculated subtotal, and formatted WhatsApp message generation.
 4. **Pre-filled 1-Click WhatsApp Ordering:**
-   * All order buttons format items, quantities, and customer details directly into a WhatsApp chat message directed to `+233 24 321 2359`.
+   * All order buttons format items, quantities, and customer details directly into a WhatsApp chat message directed to `+233 20 644 4261`.
 5. **Floating Quick-Contact Button:**
    * Persistent floating WhatsApp button on mobile and desktop for ordering at any scroll depth.
 6. **Smooth Motion & 60 FPS Performance:**
