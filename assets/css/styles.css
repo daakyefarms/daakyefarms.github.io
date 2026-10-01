@@ -54,7 +54,7 @@
 .site-header > div { gap: 12px; }
 .site-header .desktop-nav, .site-header .header-phone { display: none; }
 .site-brand { min-width: 0; gap: 8px; }
-.site-brand > div:first-child { flex-shrink: 0; width: 36px; height: 36px; }
+.site-brand > div:first-child { flex-shrink: 0; width: 44px; height: 44px; }
 .site-brand .text-xl { font-size: clamp(0.8rem, 3.7vw, 1.25rem); }
 .site-brand .tracking-widest { font-size: 8px; letter-spacing: 0.06em; }
 .header-actions { flex-shrink: 0; gap: 8px; }
@@ -79,6 +79,7 @@ input, select, textarea { max-width: 100%; }
 #orderToast { width: calc(100% - 32px); max-width: 480px; bottom: 100px; pointer-events: none; }
 #orderToast button { pointer-events: auto; min-height: 44px; flex-shrink: 0; }
 footer { padding-bottom: 150px !important; }
+footer img { flex-shrink: 0; }
 @media (max-width: 639px) {
     input, select, textarea { font-size: 16px !important; }
     .gradient-hero { padding-top: 48px; padding-bottom: 48px; }
@@ -86,7 +87,7 @@ footer { padding-bottom: 150px !important; }
     #orderToast > div { gap: 8px; padding: 12px; }
 }
 @media (min-width: 640px) {
-    .site-brand > div:first-child { width: 48px; height: 48px; }
+    .site-brand > div:first-child { width: 64px; height: 64px; }
     .site-brand .tracking-widest { font-size: 11px; }
     .site-header .header-phone { display: inline-flex; }
 }
